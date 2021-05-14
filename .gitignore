@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ASP.NET5.MVC.WEBPACK/ClientApp/package-lock.json
+/ASP.NET5.MVC.WEBPACK/wwwroot/dist

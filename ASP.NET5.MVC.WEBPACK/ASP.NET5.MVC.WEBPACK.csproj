@@ -1,12 +1,66 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <MpaRoot>ClientApp\</MpaRoot>
+    <WWWRoot>wwwroot\</WWWRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(MpaRoot)node_modules\**</DefaultItemExcludes>
+    <UserSecretsId>12635e4b-97b6-4d6d-bfed-f327a68a0cdd</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.6" />
   </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug'">
+    <EnvironmentName>Development</EnvironmentName>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release'">
+    <EnvironmentName>Production</EnvironmentName>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <!-- Don't publish the MPA source files, but do show them in the project files list -->
+    <Content Remove="$(MpaRoot)**" />
+    <None Remove="$(MpaRoot)**" />
+    <None Include="$(MpaRoot)**" Exclude="$(MpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <Target Name="RunWebpack" BeforeTargets="Build">
+    <RemoveDir Directories="$(WWWRoot)dist" />
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(MpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(MpaRoot)" Command="npm run webpack:$(Configuration)" />
+  </Target>
+
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <RemoveDir Directories="$(WWWRoot)dist" />
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(MpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(MpaRoot)" Command="npm run webpack:$(Configuration)" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(WWWRoot)dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="NpmClean" BeforeTargets="Clean">
+    <RemoveDir Directories="$(WWWRoot)dist" />
+    <RemoveDir Directories="$(MpaRoot)node_modules" />
+  </Target>
 
 </Project>

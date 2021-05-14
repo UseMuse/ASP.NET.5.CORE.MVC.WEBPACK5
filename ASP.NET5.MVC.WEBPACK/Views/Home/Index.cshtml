@@ -1,7 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@section Scripts
+{
+    <script type="module" src="~/dist/Home.js" defer></script>
+    <script>
+        /*without window.onload, window.homePage data created in router.js will not be available*/
+        window.onload = function () {
+            console.log('window.onload - Index, window.homePage data merged with data from chunk', window.homePage);
+        };
+    </script>
+}
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>

@@ -1,0 +1,1 @@
+﻿console.log('Add js bundle manually in view. The \'Home Privacy\' bundle has been loaded!');
