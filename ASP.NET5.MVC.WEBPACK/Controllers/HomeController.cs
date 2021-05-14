@@ -23,6 +23,20 @@ namespace ASP.NET5.MVC.WEBPACK.Controllers
             return View();
         }
 
+        public IActionResult DataTables()
+        {
+            ViewData["Message"] = "Demo DataTables jquery bootsrap 3.";
+
+            return View();
+        }
+
+        public IActionResult Fancybox()
+        {
+            ViewData["Message"] = "Demo Fancybox.";
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

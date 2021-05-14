@@ -1,0 +1,1 @@
+﻿console.log('Add js bundle manually in view. The \'Home DataTables\' bundle has been loaded!');

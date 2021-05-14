@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Fancybox";
+}
+@section Scripts
+{
+    <script type="module" src="~/dist/Home.Fancybox.js" defer></script>
+    <script>
+        /*without window.onload, window.homePage data created in router.js will not be available*/
+        window.onload = function () {
+            console.log('window.onload - Fancybox, window.homePage data merged with data from chunk', window.homePage);
+        };
+    </script>
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
