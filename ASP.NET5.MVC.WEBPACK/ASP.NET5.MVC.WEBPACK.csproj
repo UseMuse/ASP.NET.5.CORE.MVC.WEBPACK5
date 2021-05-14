@@ -27,6 +27,10 @@
     <None Remove="$(MpaRoot)**" />
     <None Include="$(MpaRoot)**" Exclude="$(MpaRoot)node_modules\**" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="ClientApp\src\images\" />
+  </ItemGroup>
 
   <Target Name="RunWebpack" BeforeTargets="Build">
     <RemoveDir Directories="$(WWWRoot)dist" />

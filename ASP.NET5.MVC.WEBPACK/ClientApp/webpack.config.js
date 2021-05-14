@@ -1,6 +1,9 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 //const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
+var CopyPlugin = require('copy-webpack-plugin');
+
 module.exports = (env, argv) => {
     if ((!argv || !argv.mode) && process.env.ASPNETCORE_ENVIRONMENT === "Development") {
         argv = { mode: "development" };
@@ -25,13 +28,13 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 { test: /\.css$/, use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader'] },
-                { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, use: ['file-loader'] },
                 {
-                    test: /\.(woff|woff2)$/, use: [
+                    test: /\.(woff2?|eot)(\?.*)?$/, use: [
                         {
                             loader: 'url-loader',
                             options: {
                                 limit: 5000,
+                                name: `fonts/[name].[ext]`
                             },
                         },
                     ]
@@ -43,25 +46,46 @@ module.exports = (env, argv) => {
                             options: {
                                 limit: 10000,
                                 mimetype: 'application/octet-stream',
+                                name: `fonts/[name].[ext]`
                             },
                         },
                     ]
                 },
                 {
-                    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: [
+                    test: /\.(png|jpe?g|gif|svg)(\?.*)?$/, use: [
                         {
-                            loader: 'url-loader',
-                            options: {
-                                limit: 10000,
-                                mimetype: 'image/svg+xml',
-                            },
-                        },
+                            loader: 'url-loader'
+                            , options: {
+                                limit: 100000
+                                , name: `images/[name].[ext]`
+                            }
+                        }
+                    ]
+                },
+                {
+                    test: /\.ico /, use: [
+                        {
+                            loader: 'url-loader'
+                            , options: {
+                                limit: 100000
+                            }
+                        }
                     ]
                 },
             ]
         },
         plugins: [
             /*new CleanWebpackPlugin(),*/
+            new webpack.ProvidePlugin({
+                $: "jquery",
+                jQuery: "jquery"
+            }),
+            new CopyPlugin({
+                patterns: [
+                    { from: "src/images", to: "images", noErrorOnMissing: true },
+                    /*  { from: "other", to: "public" },*/
+                ],
+            }),
             new MiniCssExtractPlugin({
                 filename: "[name].css"
             })
