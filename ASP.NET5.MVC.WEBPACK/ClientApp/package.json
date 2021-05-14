@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "name": "aspnet5mvcwebpack",
   "description": "ASP.NET5 Core MVC project with npm and webpack 5 front-end configuration.",
-  "repository": "repository",
+  "repository": "https://github.com/UseMuse/ASP.NET.5.CORE.MVC.WEBPACK5",
   "homepage": "ASPNET5MVCWEBPACK",
   "license": "MIT",
   "dependencies": {
