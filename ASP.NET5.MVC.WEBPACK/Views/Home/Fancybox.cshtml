@@ -13,3 +13,34 @@
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
+
+
+<!-- Gallery modal -->
+
+
+<div id="galleryModal" class="modal-content" style="display:none;">
+    <div class="modal-header">
+        <button type="button" class="close" data-fancybox-close aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Cats Gallery</h4>
+    </div>
+    <div class="modal-body">
+        <a href="http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg"
+           data-fancybox="gallery"
+           class="btn btn-default">Show Cat 1</a>
+        <a href="http://cdn1-www.cattime.com/assets/uploads/gallery/persian-cats-and-kittens/persian-cats-and-kittens-1.jpg"
+           data-fancybox="gallery"
+           class="btn btn-default">Show Cat 2</a>
+    </div>
+</div>
+
+
+
+<button class="btn btn-default" data-fancybox data-options='{"smallBtn":false, "buttons":false}' data-src="#galleryModal">Show cats</button>
+<br />
+<br />
+<a href="http://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg"
+   data-fancybox="gallery2"
+   class="btn btn-default">Show Cat 1</a>
+<a href="http://cdn1-www.cattime.com/assets/uploads/gallery/persian-cats-and-kittens/persian-cats-and-kittens-1.jpg"
+   data-fancybox="gallery2"
+   class="btn btn-default">Show Cat 2</a>
