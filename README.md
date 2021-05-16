@@ -4,4 +4,4 @@ JQuery
 
 Master branch - asp.net 5 core mvc, default template, with only embedded webpack 5 for the front-end
 
-bootstra3 branch with bootstrap 3 instead of 4, with examples of using DataTables (jquery) and fancyapps fancybox
+bootstra3 branch with bootstrap 3 instead of 4, examples of using npm, webpack and such libraries as: bootstrap-multiselect, DataTables (jquery) and fancyapps fancybox
