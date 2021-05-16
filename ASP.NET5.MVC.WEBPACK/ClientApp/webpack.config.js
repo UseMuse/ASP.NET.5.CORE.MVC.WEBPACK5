@@ -82,15 +82,15 @@ module.exports = (env, argv) => {
                 $: "jquery",
                 jQuery: "jquery"
             }),
-          
+
             new CopyPlugin({
                 patterns: [
                     { from: "src/images", to: "images", noErrorOnMissing: true },
-                  /*  { from: "other", to: "public" },*/
+                    /*  { from: "other", to: "public" },*/
                 ],
             }),
             new MiniCssExtractPlugin({
-                filename: "[name].css"
+                filename: "css/[name].css"
             })
         ]
     }]

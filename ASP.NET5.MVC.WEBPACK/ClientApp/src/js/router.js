@@ -15,6 +15,14 @@ var routes = {
                     console.log('Route Index, merge data from module with window.homePage', module);
                 });
         },
+        DataTables: function () {
+            console.log('Route Home DataTables, start dynamic import ./Home/DataTables.js');
+            import(
+                /* webpackChunkName: "homePage" */
+                "./Home/DataTables.js").then((module) => {
+                    console.log('Route DataTables, finish dynamic import module has been loaded', module);
+                });
+        },
         Privacy: function () {
             console.log('Route Home Privacy, start dynamic import ./HomeDemoChunks/Privacy.js');
             import(
