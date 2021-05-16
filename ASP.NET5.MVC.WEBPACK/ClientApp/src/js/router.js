@@ -23,6 +23,9 @@ var routes = {
                     console.log('Route DataTables, finish dynamic import module has been loaded', module);
                 });
         },
+        BootstrapMultiselect: function () {
+            console.log('Route Home BootstrapMultiselect');
+        },
         Privacy: function () {
             console.log('Route Home Privacy, start dynamic import ./HomeDemoChunks/Privacy.js');
             import(

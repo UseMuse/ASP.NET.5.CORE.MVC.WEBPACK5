@@ -9,9 +9,7 @@
         /*without window.onload, window.homePage data created in router.js will not be available*/
         window.onload = function () {
             console.log('window.onload - DataTables, window.homePage data merged with data from chunk', window.homePage);
-            $(document).ready(function () {
-                $('#example').DataTable();
-            });
+            $('#example').DataTable();
         };
     </script>
 }

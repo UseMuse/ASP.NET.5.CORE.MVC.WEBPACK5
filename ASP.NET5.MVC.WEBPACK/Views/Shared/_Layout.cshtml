@@ -15,7 +15,13 @@
                   asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
             <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         </environment>*@
+
+
+  
+
     <link href="~/dist/css/_Layout.css" rel="stylesheet" />
+
+
 </head>
 <body data-controller="@ViewContext.RouteData.Values["Controller"]" data-action="@ViewContext.RouteData.Values["Action"]">
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -34,6 +40,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="DataTables">DataTables</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Fancybox">Fancybox</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="BootstrapMultiselect">Bootstrap-multiselect</a></li>
                 </ul>
             </div>
         </div>
@@ -69,8 +76,8 @@
             </script>
             <script src="~/js/site.min.js" asp-append-version="true"></script>
         </environment>*@
-
-    <script type="module" src="~/dist/_Layout.js" defer></script>
+    <script src="~/dist/_Layout.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

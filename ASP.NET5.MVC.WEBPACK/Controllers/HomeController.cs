@@ -36,6 +36,12 @@ namespace ASP.NET5.MVC.WEBPACK.Controllers
 
             return View();
         }
+        public IActionResult BootstrapMultiselect()
+        {
+            ViewData["Message"] = "Demo BootstrapMultiselect.";
+
+            return View();
+        }
 
         public IActionResult Privacy()
         {

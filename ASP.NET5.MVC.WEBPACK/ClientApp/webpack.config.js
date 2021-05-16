@@ -86,6 +86,7 @@ module.exports = (env, argv) => {
             new CopyPlugin({
                 patterns: [
                     { from: "src/images", to: "images", noErrorOnMissing: true },
+                    { from: "./node_modules/bootstrap-multiselect", to: "../lib/bootstrap-multiselect", noErrorOnMissing: true },
                     /*  { from: "other", to: "public" },*/
                 ],
             }),

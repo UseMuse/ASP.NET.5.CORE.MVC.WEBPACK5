@@ -8,6 +8,7 @@
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
     "bootstrap": "3.4.1",
+    "bootstrap-multiselect": "^0.9.15",
     "cross-env": "7.0.3",
     "datatables.net-bs": "^1.10.24",
     "jquery": "^3.6.0",

@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /ASP.NET5.MVC.WEBPACK/ClientApp/package-lock.json
 /ASP.NET5.MVC.WEBPACK/wwwroot/dist
+/ASP.NET5.MVC.WEBPACK/wwwroot/lib
