@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "BootstrapSteps";
+}
+
+@section Scripts
+{
+
+    <script src="~/lib/jquery-bootstrap-modal-stepwise/dist/modal-steps.min.js"></script>
+    <script>
+        function ready() {
+            $('#myModal').modalSteps({
+                btnCancelHtml: 'Cancel',
+                btnPreviousHtml: 'Previous',
+                btnNextHtml: 'Next',
+                btnLastStepHtml: 'Complete',
+                disableNextButton: false,
+                completeCallback: function () { },
+                callbacks: {}
+            });
+        }
+        document.addEventListener("DOMContentLoaded", ready);
+    </script>
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+</button>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="js-title-step"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row hide" data-step="1" data-title="This is the first step!">
+                    <div class="jumbotron">This is step 1</div>
+                </div>
+                <div class="row hide" data-step="2" data-title="This is the second step!">
+                    <div class="jumbotron">This is step 2</div>
+                </div>
+                div class="row hide" data-step="3" data-title="This is the third and last step!">
+                <div class="jumbotron">This is step 3</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default js-btn-step pull-left" data-orientation="cancel" data-dismiss="modal"></button>
+            <button type="button" class="btn btn-warning js-btn-step" data-orientation="previous"></button>
+            <button type="button" class="btn btn-success js-btn-step" data-orientation="next"></button>
+        </div>
+    </div>
+</div>

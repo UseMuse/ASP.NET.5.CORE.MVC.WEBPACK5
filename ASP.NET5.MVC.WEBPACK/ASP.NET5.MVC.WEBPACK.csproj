@@ -29,7 +29,85 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Content Include="ClientApp\src\lib\bootstrap-modal-steps\js\jquery-bootstrap-modal-steps.min.js" />
+    <Content Include="ClientApp\src\lib\fontawesome\css\pro-v4-font-face.min.css" />
+    <Content Include="ClientApp\src\lib\fontawesome\css\pro-v4-shims.min.css" />
+    <Content Include="ClientApp\src\lib\fontawesome\css\pro.min.css" />
+    <Content Include="ClientApp\src\lib\fontawesome\index.js" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.0.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.0.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.0.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.0.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.1.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.1.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.1.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.1.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.2.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.2.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.2.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.2.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.3.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.3.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.3.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.3.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.0.5.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.12.0.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.12.0.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.12.0.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-brands-400-5.12.0.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.0.0.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.0.0.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.0.0.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.0.0.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.0.3.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.0.3.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.0.3.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.0.3.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.10.2.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.11.0.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.11.0.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.11.0.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.11.0.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.12.0.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.12.0.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.12.0.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-regular-400-5.12.0.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.0.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.0.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.0.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.0.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.3.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.3.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.3.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.3.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.7.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.7.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.7.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.0.7.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.10.1.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.11.0.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.11.0.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.11.0.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.11.0.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.12.0.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.12.0.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.12.0.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.12.0.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.8.0.woff2" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.9.0.eot" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.9.0.ttf" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.9.0.woff" />
+    <Content Include="ClientApp\src\lib\fontawesome\webfonts\pro-fa-solid-900-5.9.0.woff2" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="wwwroot\lib\jquery-bootstrap-modal-stepwise\.bower.json" />
+    <None Include="wwwroot\lib\jquery-bootstrap-modal-stepwise\bower.json" />
+    <None Include="wwwroot\lib\jquery-bootstrap-modal-stepwise\dist\modal-steps.min.js" />
+    <None Include="wwwroot\lib\jquery-bootstrap-modal-stepwise\Gruntfile.js" />
+    <None Include="wwwroot\lib\jquery-bootstrap-modal-stepwise\LICENSE" />
+    <None Include="wwwroot\lib\jquery-bootstrap-modal-stepwise\package.json" />
+    <None Include="wwwroot\lib\jquery-bootstrap-modal-stepwise\README.md" />
+    <None Include="wwwroot\lib\jquery-bootstrap-modal-stepwise\_config.yml" />
   </ItemGroup>
 
   <Target Name="RunWebpack" BeforeTargets="Build">

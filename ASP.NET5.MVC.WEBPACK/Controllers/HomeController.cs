@@ -55,7 +55,12 @@ namespace ASP.NET5.MVC.WEBPACK.Controllers
 
             return View();
         }
+        public IActionResult BootstrapSteps()
+        {
+            ViewData["Message"] = "Demo BootstrapSteps.";
 
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

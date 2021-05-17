@@ -1,6 +1,7 @@
-﻿// JS Dependencies: Bootstrap & JQuery
+﻿
+// JS Dependencies: Bootstrap & JQuery
 import 'bootstrap';
-
+import '../../lib/fontawesome/index.js'
 import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;

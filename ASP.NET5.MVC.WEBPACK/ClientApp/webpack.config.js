@@ -39,7 +39,6 @@ module.exports = (env, argv) => {
             'Home.Privacy': './src/js/Home/Privacy.js',//for Home/Privacy.cshtml
             'Home.DataTables': './src/js/Home/DataTables.js',//for Home/DataTables.cshtml
             'Home.Fancybox': './src/js/Home/Fancybox.js',//for Home/Fancybox.cshtml
-            'Home.Fontawesome': './src/js/Home/Fontawesome.js',//for Home/Fontawesome.cshtml
             'Home.Daterangepicker': './src/js/Home/Daterangepicker.js',//for Home/Daterangepicker.cshtml
         },
         amd: {
@@ -179,10 +178,7 @@ module.exports = (env, argv) => {
             new CopyPlugin({
                 patterns: [
                     { from: "src/images", to: "images", noErrorOnMissing: true },
-                    { from: "./node_modules/bootstrap-multiselect", to: "../lib/bootstrap-multiselect", noErrorOnMissing: true },
                     { from: "src/images/favicon.ico", to: "../favicon.ico", noErrorOnMissing: true },
-                    { from: "src/lib/bootstrap-modal-steps", to: "../lib/bootstrap-modal-steps", noErrorOnMissing: true },
-                    { from: "src/lib/fontawesome", to: "../lib/fontawesome", noErrorOnMissing: true },
                  /*   { from: "./node_modules/daterangepicker", to: "../lib/daterangepicker", noErrorOnMissing: true },*/
                     /*  { from: "other", to: "public" },*/
                 ],
