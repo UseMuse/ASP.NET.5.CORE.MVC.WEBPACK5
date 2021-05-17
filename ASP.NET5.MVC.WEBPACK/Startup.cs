@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.Net.Http.Headers;
 namespace ASP.NET5.MVC.WEBPACK
 {
     public class Startup
@@ -28,9 +28,14 @@ namespace ASP.NET5.MVC.WEBPACK
 
             services.AddSession(options =>
             {
-                options.Cookie.SameSite = SameSiteMode.None;
+                options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None;
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
+            });
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "wwwroot/dist";
             });
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -51,6 +56,7 @@ namespace ASP.NET5.MVC.WEBPACK
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
             app.UseCookiePolicy();
          
             app.UseRouting();
@@ -64,6 +70,24 @@ namespace ASP.NET5.MVC.WEBPACK
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+
+                spa.Options.DefaultPageStaticFileOptions = new StaticFileOptions
+                {
+                    OnPrepareResponse = ctx =>
+                    {
+                        // Do not cache implicit `/index.html`.  See also: `UseSpaStaticFiles` above
+                        var headers = ctx.Context.Response.GetTypedHeaders();
+                        headers.CacheControl = new CacheControlHeaderValue
+                        {
+                            NoStore = true
+                        };
+                    }
+                };
             });
         }
     }

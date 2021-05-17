@@ -14,6 +14,7 @@ module.exports = (env, argv) => {
     }
     console.debug("mode =", argv.mode);
 
+
     const isEnvDevelopment = argv.mode === 'development';
     const isEnvProduction = argv.mode === 'production';
 
@@ -41,9 +42,6 @@ module.exports = (env, argv) => {
             'Home.Fancybox': './src/js/Home/Fancybox.js',//for Home/Fancybox.cshtml
             'Home.Daterangepicker': './src/js/Home/Daterangepicker.js',//for Home/Daterangepicker.cshtml
         },
-        amd: {
-            jQuery: true,
-        },
         output: {
             path: path.resolve(__dirname, '..', 'wwwroot', 'dist'),
             // Add /* filename */ comments to generated require()s in the output.
@@ -53,14 +51,9 @@ module.exports = (env, argv) => {
             publicPath: `${process.env.homepage}dist/`,
             // this defaults to 'window', but by setting it to 'this' then
             // module chunks which are built will work in web workers as well.
-           // globalObject: window
+            // globalObject: window
         },
-        //resolve: {
-        //    alias: {
-        //        'node_modules': path.resolve(__dirname, './node_modules'),
-        //        "./dependencyLibs/inputmask.dependencyLib": "./dependencyLibs/inputmask.dependencyLib.jquery"
-        //    }
-        //},
+       
         //optimization: {
         //    minimize: isEnvProduction,
         //    minimizer: [() => ({
@@ -179,7 +172,6 @@ module.exports = (env, argv) => {
                 patterns: [
                     { from: "src/images", to: "images", noErrorOnMissing: true },
                     { from: "src/images/favicon.ico", to: "../favicon.ico", noErrorOnMissing: true },
-                 /*   { from: "./node_modules/daterangepicker", to: "../lib/daterangepicker", noErrorOnMissing: true },*/
                     /*  { from: "other", to: "public" },*/
                 ],
             }),
