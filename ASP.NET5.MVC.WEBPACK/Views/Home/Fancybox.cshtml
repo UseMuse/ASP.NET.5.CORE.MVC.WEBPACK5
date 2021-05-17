@@ -3,12 +3,12 @@
 }
 @section Scripts
 {
+    <link href="~/dist/css/Home.Fancybox.css" rel="stylesheet" />
     <script type="module" src="~/dist/Home.Fancybox.js" defer></script>
     <script>
-        /*without window.onload, window.homePage data created in router.js will not be available*/
-        window.onload = function () {
-            console.log('window.onload - Fancybox, window.homePage data merged with data from chunk', window.homePage);
-        };
+        function ready() {
+        }
+        document.addEventListener("DOMContentLoaded", ready);
     </script>
 }
 <h2>@ViewData["Title"]</h2>

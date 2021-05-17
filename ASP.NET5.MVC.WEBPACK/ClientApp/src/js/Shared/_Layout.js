@@ -1,18 +1,18 @@
 ﻿// JS Dependencies: Bootstrap & JQuery
 import 'bootstrap';
-import $ from 'jquery';
 
+import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 window.jquery = $;
+
+import moment from 'moment';
+window.moment = moment;
 
 /*import './_ValidationScriptsPartial'*/
 
 // CSS Dependencies: Bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
-
-// Custom JS imports
-// ... none at the moment
 
 // Custom CSS imports
 import '../../css/site.css';

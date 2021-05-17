@@ -43,6 +43,19 @@ namespace ASP.NET5.MVC.WEBPACK.Controllers
             return View();
         }
 
+        public IActionResult Fontawesome()
+        {
+            ViewData["Message"] = "Demo Fontawesome.";
+
+            return View();
+        }
+        public IActionResult Daterangepicker()
+        {
+            ViewData["Message"] = "Demo Daterangepicker.";
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

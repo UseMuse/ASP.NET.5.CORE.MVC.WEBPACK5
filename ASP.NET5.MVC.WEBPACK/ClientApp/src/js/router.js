@@ -16,15 +16,19 @@ var routes = {
                 });
         },
         DataTables: function () {
-            console.log('Route Home DataTables, start dynamic import ./Home/DataTables.js');
-            import(
-                /* webpackChunkName: "homePage" */
-                "./Home/DataTables.js").then((module) => {
-                    console.log('Route DataTables, finish dynamic import module has been loaded', module);
-                });
+            console.log('Route Home DataTables');
+        },
+        Fancybox: function () {
+            console.log('Route Home Fancybox');
         },
         BootstrapMultiselect: function () {
             console.log('Route Home BootstrapMultiselect');
+        },
+        Fontawesome: function () {
+            console.log('Route Home Fontawesome');
+        },
+        Daterangepicker: function () {
+            console.log('Route Home Daterangepicker');
         },
         Privacy: function () {
             console.log('Route Home Privacy, start dynamic import ./HomeDemoChunks/Privacy.js');

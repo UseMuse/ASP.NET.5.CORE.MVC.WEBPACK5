@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Daterangepicker";
+}
+
+@section Scripts
+{
+    @*<script src="~/lib/daterangepicker/moment.min.js"></script>
+        <link href="~/lib/daterangepicker/daterangepicker.css" rel="stylesheet" />
+        <script src="~/lib/daterangepicker/daterangepicker.js"></script>*@
+    <link href="~/dist/css/Home.Daterangepicker.css" rel="stylesheet" />
+    <script src="~/dist/Home.Daterangepicker.js"></script>
+    <script>
+        function ready() {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function (start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        }
+        document.addEventListener("DOMContentLoaded", ready);
+    </script>
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+<input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />

@@ -1,15 +1,16 @@
 ﻿@{
     ViewData["Title"] = "BootstrapMultiselect";
 }
-<link href="~/lib/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" rel="stylesheet" />
 
 @section Scripts
 {
+    <link href="~/lib/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" rel="stylesheet" />
     <script src="~/lib/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
     <script>
-        $(document).ready(function () {
+        function ready() {
             $('#example-getting-started').multiselect();
-        });
+        }
+        document.addEventListener("DOMContentLoaded", ready);
     </script>
 }
 <h2>@ViewData["Title"]</h2>

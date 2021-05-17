@@ -1,16 +1,18 @@
 ﻿@{
     ViewData["Title"] = "DataTables";
 }
-<link href="~/dist/css/Home.DataTables.css" rel="stylesheet" />
+
+
 @section Scripts
 {
-    @*<script type="module" src="~/dist/Home.DataTables.js" defer></script>*@
+    <link href="~/dist/css/Home.DataTables.css" rel="stylesheet" />
+    <script src="~/dist/Home.DataTables.js"></script>
     <script>
-        /*without window.onload, window.homePage data created in router.js will not be available*/
-        window.onload = function () {
-            console.log('window.onload - DataTables, window.homePage data merged with data from chunk', window.homePage);
+        function ready() {
             $('#example').DataTable();
-        };
+        }
+        document.addEventListener("DOMContentLoaded", ready);
+
     </script>
 }
 <h2>@ViewData["Title"]</h2>
