@@ -43,6 +43,7 @@ module.exports = (env, argv) => {
             'Home.Daterangepicker': './src/js/Home/Daterangepicker.js',//for Home/Daterangepicker.cshtml
             'Home.Sweetalert2': './src/js/Home/Sweetalert2.js',//for Home/Sweetalert2.cshtml
             'Home.Toastr': './src/js/Home/Toastr.js',//for Home/Toastr.cshtml
+            'Home.SerializeQueryParams': './src/js/Home/SerializeQueryParams.js',//for Home/SerializeQueryParams.cshtml
         },
         output: {
             path: path.resolve(__dirname, '..', 'wwwroot', 'dist'),
@@ -53,7 +54,7 @@ module.exports = (env, argv) => {
             publicPath: `${process.env.homepage}dist/`,
             // this defaults to 'window', but by setting it to 'this' then
             // module chunks which are built will work in web workers as well.
-            // globalObject: window
+            globalObject: 'this'
         },
         resolve: {
             extensions: [
@@ -117,11 +118,11 @@ module.exports = (env, argv) => {
         module: {
             strictExportPresence: true,
             rules: [
-                {
-                    parser: {
-                        amd: false, // disable AMD
-                    }
-                },
+                //{
+                //    parser: {
+                //        amd: false, // disable AMD
+                //    }
+                //},
                 // CSS, PostCSS, Sass
                 {
                     test: /\.(scss|css)$/,

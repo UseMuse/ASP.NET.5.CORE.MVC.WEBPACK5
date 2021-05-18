@@ -2,8 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <!--<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>-->
-    <IsPackable>false</IsPackable>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <MpaRoot>ClientApp\</MpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(MpaRoot)node_modules\**</DefaultItemExcludes>
     <WWWRoot>wwwroot\</WWWRoot>
@@ -29,7 +28,6 @@
     <None Remove="$(MpaRoot)**" />
     <None Include="$(MpaRoot)**" Exclude="$(MpaRoot)node_modules\**" />
   </ItemGroup>
-
 
   <Target Name="RunWebpack" BeforeTargets="Build">
     <RemoveDir Directories="$(WWWRoot)dist" />

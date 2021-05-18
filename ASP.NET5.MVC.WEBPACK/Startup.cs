@@ -1,15 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Net.Http.Headers;
+
 namespace ASP.NET5.MVC.WEBPACK
 {
     public class Startup
@@ -31,11 +25,6 @@ namespace ASP.NET5.MVC.WEBPACK
                 options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None;
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
-            });
-
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "wwwroot/dist";
             });
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -72,23 +61,6 @@ namespace ASP.NET5.MVC.WEBPACK
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-
-                spa.Options.DefaultPageStaticFileOptions = new StaticFileOptions
-                {
-                    OnPrepareResponse = ctx =>
-                    {
-                        // Do not cache implicit `/index.html`.  See also: `UseSpaStaticFiles` above
-                        var headers = ctx.Context.Response.GetTypedHeaders();
-                        headers.CacheControl = new CacheControlHeaderValue
-                        {
-                            NoStore = true
-                        };
-                    }
-                };
-            });
         }
     }
 }

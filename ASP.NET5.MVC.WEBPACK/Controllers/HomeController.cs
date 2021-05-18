@@ -76,6 +76,13 @@ namespace ASP.NET5.MVC.WEBPACK.Controllers
             return View();
         }
 
+        public IActionResult SerializeQueryParams()
+        {
+            ViewData["Message"] = "Demo SerializeQueryParams.";
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
