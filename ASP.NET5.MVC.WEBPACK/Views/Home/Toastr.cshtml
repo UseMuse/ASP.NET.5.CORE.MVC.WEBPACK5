@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Toastr";
+}
+
+@section Scripts
+{
+
+    <link href="~/dist/css/Home.Toastr.css" rel="stylesheet" />
+    <script src="~/dist/Home.Toastr.js"></script>
+    <script>
+        function ready() {
+
+        }
+        function RazorFunction() {
+            toastr.success('Any fool can use a computer');    
+        }
+        document.addEventListener("DOMContentLoaded", ready);
+
+
+    </script>
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+<button type="button" class="btn btn-primary" Onclick="RazorFunction()">
+    A basic message
+</button>

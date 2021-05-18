@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Sweetalert2";
+}
+
+@section Scripts
+{
+
+    <link href="~/dist/css/Home.Sweetalert2.css" rel="stylesheet" />
+    <script src="~/dist/Home.Sweetalert2.js"></script>
+    <script>
+        function ready() {
+            
+        }
+        function RazorFunction() {
+            Swal.fire('Any fool can use a computer')
+        }
+        document.addEventListener("DOMContentLoaded", ready);
+
+
+    </script>
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+<button type="button" class="btn btn-primary" Onclick="RazorFunction()">
+    A basic message
+</button>

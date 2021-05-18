@@ -61,6 +61,21 @@ namespace ASP.NET5.MVC.WEBPACK.Controllers
 
             return View();
         }
+
+        public IActionResult Sweetalert2()
+        {
+            ViewData["Message"] = "Demo Sweetalert2.";
+
+            return View();
+        }
+
+        public IActionResult Toastr()
+        {
+            ViewData["Message"] = "Demo Toastr.";
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

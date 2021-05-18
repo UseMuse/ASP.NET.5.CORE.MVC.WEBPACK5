@@ -50,16 +50,23 @@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ASP.NET5.CORE.MVC.WEBPACK5</a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="DataTables">DataTables</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Fancybox">Fancybox</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="BootstrapMultiselect">Multiselect</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Fontawesome">Fontawesome</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Daterangepicker">Daterangepicker</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="BootstrapSteps">Steps</a></li>
-                </ul>
-            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Utils<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a asp-area="" asp-controller="Home" asp-action="DataTables">DataTables</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Fancybox">Fancybox</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="BootstrapMultiselect">Multiselect</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Fontawesome">Fontawesome</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Daterangepicker">Daterangepicker</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="BootstrapSteps">Steps</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Sweetalert2">Sweetalert2</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Toastr">Toastr</a></li>
+                    </ul>
+                </li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+            </ul>
         </div>
     </nav>
 

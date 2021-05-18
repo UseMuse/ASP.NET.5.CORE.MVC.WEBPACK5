@@ -41,6 +41,8 @@ module.exports = (env, argv) => {
             'Home.DataTables': './src/js/Home/DataTables.js',//for Home/DataTables.cshtml
             'Home.Fancybox': './src/js/Home/Fancybox.js',//for Home/Fancybox.cshtml
             'Home.Daterangepicker': './src/js/Home/Daterangepicker.js',//for Home/Daterangepicker.cshtml
+            'Home.Sweetalert2': './src/js/Home/Sweetalert2.js',//for Home/Sweetalert2.cshtml
+            'Home.Toastr': './src/js/Home/Toastr.js',//for Home/Toastr.cshtml
         },
         output: {
             path: path.resolve(__dirname, '..', 'wwwroot', 'dist'),
@@ -53,7 +55,19 @@ module.exports = (env, argv) => {
             // module chunks which are built will work in web workers as well.
             // globalObject: window
         },
-       
+        resolve: {
+            extensions: [
+                '.js',
+                '.css',
+                '.scss',
+                '*',
+                '.vue',
+                'cshtml'
+            ],
+            alias: {
+                'node_modules': path.resolve(__dirname, './node_modules'),
+            }
+        },
         //optimization: {
         //    minimize: isEnvProduction,
         //    minimizer: [() => ({
@@ -108,7 +122,11 @@ module.exports = (env, argv) => {
                         amd: false, // disable AMD
                     }
                 },
-                { test: /\.css$/, use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader'] },
+                // CSS, PostCSS, Sass
+                {
+                    test: /\.(scss|css)$/,
+                    use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+                },
                 {
                     test: /\.(woff2?|eot)(\?.*)?$/, use: [
                         {
@@ -154,6 +172,11 @@ module.exports = (env, argv) => {
                         }
                     ]
                 },
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: ['babel-loader'],
+                },
             ]
         },
         plugins: [
@@ -166,7 +189,6 @@ module.exports = (env, argv) => {
             new webpack.ProvidePlugin({
                 $: "jquery",
                 jQuery: "jquery",
-                moment: 'moment'
             }),
             new CopyPlugin({
                 patterns: [

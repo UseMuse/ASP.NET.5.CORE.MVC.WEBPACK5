@@ -11,10 +11,12 @@
     <script src="~/dist/Home.Daterangepicker.js"></script>
     <script>
         function ready() {
+
             var datetimepiker = $(":input[type='datetimepiker']");
 
             if (datetimepiker.length > 0) {
-                datetimepiker.inputmask({ alias: "datetime", inputFormat: "dd.mm.yyyy HH:MM:ss", placeholder: "дд.мм.гггг --:--:--", });
+                // datetimepiker.inputmask({ alias: "datetime", inputFormat: "dd.mm.yyyy HH:MM:ss", placeholder: "дд.мм.гггг --:--:--", });
+                datetimepiker.inputmask("datetime", { "clearIncomplete": true });
 
                 datetimepiker.daterangepicker({
                     "singleDatePicker": true,
