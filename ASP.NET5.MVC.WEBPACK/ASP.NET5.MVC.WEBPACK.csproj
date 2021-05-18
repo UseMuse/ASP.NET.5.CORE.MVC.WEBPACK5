@@ -28,10 +28,6 @@
     <None Include="$(MpaRoot)**" Exclude="$(MpaRoot)node_modules\**" />
   </ItemGroup>
   
-  <ItemGroup>
-    <Folder Include="ClientApp\src\images\" />
-  </ItemGroup>
-
   <Target Name="RunWebpack" BeforeTargets="Build">
     <RemoveDir Directories="$(WWWRoot)dist" />
     <!-- Ensure Node.js is installed -->

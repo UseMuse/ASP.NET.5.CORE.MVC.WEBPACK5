@@ -1,16 +1,35 @@
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 //const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 var CopyPlugin = require('copy-webpack-plugin');
+
+// Source maps are resource heavy and can cause out of memory issue for large source files.
+const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
 module.exports = (env, argv) => {
     if ((!argv || !argv.mode) && process.env.ASPNETCORE_ENVIRONMENT === "Development") {
         argv = { mode: "development" };
     }
     console.debug("mode =", argv.mode);
-    const IsDevelopment = argv.mode !== "production";
+    const isEnvDevelopment = argv.mode === 'development';
+    const isEnvProduction = argv.mode === 'production';
+
+    // Variable used for enabling profiling in Production
+    // passed into alias object. Uses a flag if passed into the build command
+    const isEnvProductionProfile =
+        isEnvProduction && (process.argv.includes('--profile'));
+
     return [{
+        mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
+        // Stop compilation early in production
+        bail: isEnvProduction,
+        devtool: isEnvProduction
+            ? (shouldUseSourceMap
+                ? 'source-map'
+                : false)
+            : isEnvDevelopment && 'cheap-module-source-map',
         entry: {
             //all these bundles are added to the view manually
             _Layout: './src/js/Shared/_Layout.js', //for _Layout.cshtml. (bootstrap, jquery, site.css)
@@ -23,11 +42,78 @@ module.exports = (env, argv) => {
             path: path.resolve(__dirname, '..', 'wwwroot', 'dist'),
             publicPath: `${process.env.homepage}dist/`,
         },
-        devtool: IsDevelopment ? "source-map" : false,
-        mode: IsDevelopment ? 'development' : 'production',
+        resolve: {
+            extensions: [
+                '.js',
+                '.css',
+                '.scss',
+                '*',
+                '.vue',
+                'cshtml'
+            ],
+            alias: {
+                'node_modules': path.resolve(__dirname, './node_modules'),
+            }
+        },
+        optimization: {
+            minimize: isEnvProduction,
+            minimizer: [() => ({
+                terserOptions: {
+                    parse: {
+                        // We want terser to parse ecma 8 code. However, we don't want it
+                        // to apply any minification steps that turns valid ecma 5 code
+                        // into invalid ecma 5 code. This is why the 'compress' and 'output'
+                        // sections only apply transformations that are ecma 5 safe
+                        // https://github.com/facebook/create-react-app/pull/4234
+                        ecma: 8,
+                    },
+                    compress: {
+                        ecma: 5,
+                        warnings: false,
+                        // Disabled because of an issue with Uglify breaking seemingly valid code:
+                        // https://github.com/facebook/create-react-app/issues/2376
+                        // Pending further investigation:
+                        // https://github.com/mishoo/UglifyJS2/issues/2011
+                        comparisons: false,
+                        // Disabled because of an issue with Terser breaking valid code:
+                        // https://github.com/facebook/create-react-app/issues/5250
+                        // Pending further investigation:
+                        // https://github.com/terser-js/terser/issues/120
+                        inline: 2,
+                    },
+                    mangle: {
+                        safari10: true,
+                    },
+                    // Added for profiling in devtools
+                    keep_classnames: isEnvProductionProfile,
+                    keep_fnames: isEnvProductionProfile,
+                    output: {
+                        ecma: 5,
+                        comments: false,
+                        // Turned on because emoji and regex is not minified properly using default
+                        // https://github.com/facebook/create-react-app/issues/2488
+                        ascii_only: true,
+                    },
+                    sourceMap: shouldUseSourceMap,
+                },
+
+            }),
+            new CssMinimizerPlugin(),
+            ]
+        },
         module: {
+            strictExportPresence: true,
             rules: [
-                { test: /\.css$/, use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader'] },
+                {
+                    parser: {
+                        amd: false, // disable AMD
+                    }
+                },
+                // CSS, PostCSS
+                {
+                    test: /\.(scss|css)$/,
+                    use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+                },
                 {
                     test: /\.(woff2?|eot)(\?.*)?$/, use: [
                         {
@@ -63,14 +149,20 @@ module.exports = (env, argv) => {
                     ]
                 },
                 {
-                    test: /\.ico /, use: [
+                    test: /favicon\.ico$/, use: [
                         {
-                            loader: 'url-loader'
-                            , options: {
-                                limit: 100000
-                            }
+                            loader: 'url-loader',
+                            options: {
+                                limit: 1,
+                                name: '[name].[ext]',
+                            },
                         }
                     ]
+                },
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: ['babel-loader'],
                 },
             ]
         },
@@ -83,6 +175,7 @@ module.exports = (env, argv) => {
             new CopyPlugin({
                 patterns: [
                     { from: "src/images", to: "images", noErrorOnMissing: true },
+                    { from: "src/images/favicon.ico", to: "../favicon.ico", noErrorOnMissing: true },
                     /*  { from: "other", to: "public" },*/
                 ],
             }),

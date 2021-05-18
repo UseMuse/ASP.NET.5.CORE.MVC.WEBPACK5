@@ -6,9 +6,14 @@
     <title>@ViewData["Title"] - ASP.NET5.MVC.WEBPACK</title>
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />*@
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
     <link href="~/dist/_Layout.css" rel="stylesheet" />
 </head>
 <body data-controller="@ViewContext.RouteData.Values["Controller"]" data-action="@ViewContext.RouteData.Values["Action"]">
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>*@
+    <script src="~/dist/_Layout.js"></script>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -33,6 +38,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            @await RenderSectionAsync("Scripts", required: false)
             @RenderBody()
         </main>
     </div>
@@ -42,10 +48,5 @@
             &copy; 2021 - ASP.NET5.MVC.WEBPACK - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>*@
-    <script type="module" src="~/dist/_Layout.js" defer></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
