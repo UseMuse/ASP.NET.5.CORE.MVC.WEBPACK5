@@ -7,6 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.14.0",
     "@fancyapps/fancybox": "^3.5.7",
     "bootstrap": "3.4.1",
     "bootstrap-multiselect": "0.9.15",
@@ -34,8 +35,14 @@
     "@babel/plugin-transform-modules-amd": "7.14.2",
     "@babel/plugin-transform-modules-commonjs": "^7.14.0",
     "@babel/plugin-transform-modules-umd": "^7.14.0",
+    "@babel/plugin-transform-runtime": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
+    "babel-core": "^6.26.3",
     "babel-loader": "^8.2.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "3.0.0",
     "copy-webpack-plugin": "8.1.1",
     "css-loader": "^5.2.4",
@@ -67,7 +74,8 @@
     "plugins": [
       "@babel/plugin-transform-modules-umd",
       "@babel/plugin-syntax-dynamic-import",
-      "@babel/plugin-proposal-class-properties"
+      "@babel/plugin-proposal-class-properties",
+      "@babel/transform-runtime"
     ]
   }
 }
