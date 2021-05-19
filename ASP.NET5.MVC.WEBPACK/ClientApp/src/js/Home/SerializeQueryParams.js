@@ -11,8 +11,7 @@
     updateInLocation
 } from 'serialize-query-params';
 
-
-export function setArrayParamUrl(name, array) {
+function setArrayParamUrl(name, array) {
     if (array) {
         const encodedQuery = encodeQueryParams(
             { [name]: DelimitedArrayParam },
@@ -23,7 +22,7 @@ export function setArrayParamUrl(name, array) {
     }
 }
 
-export function getArrayParamUrl(name) {
+function getArrayParamUrl(name) {
     const ulrParams = getUrlParam();
     const params = decodeQueryParams(
         { [name]: DelimitedArrayParam },
@@ -32,7 +31,7 @@ export function getArrayParamUrl(name) {
     return params[name];
 }
 
-export function setObjParamUrl(name, propName, value) {
+function setObjParamUrl(name, propName, value) {
     let obj = getObjParamUrl(name);
     if (obj === null) {
         obj = {};
@@ -47,7 +46,7 @@ export function setObjParamUrl(name, propName, value) {
     window.history.replaceState(newLocation.query, '', `${location.pathname}${newLocation.search}`);
 }
 
-export function getObjParamUrl(name, propName = null) {
+function getObjParamUrl(name, propName = null) {
     const ulrParams = getUrlParam();
     if (ulrParams.hasOwnProperty(name) === false) { return null; }
     const params = decodeQueryParams(
@@ -63,8 +62,19 @@ export function getObjParamUrl(name, propName = null) {
     return qwe;
 }
 
-export function getUrlParam() {
+function getUrlParam() {
     const urlParams = new URLSearchParams(location.search);
     const ulrParams = Object.fromEntries(urlParams)
     return ulrParams;
 }
+
+
+module.exports = {
+    serializeQueryParams: {
+        setArrayParamUrl,
+        getArrayParamUrl,
+        setObjParamUrl,
+        getObjParamUrl,
+        getUrlParam,
+    }
+};

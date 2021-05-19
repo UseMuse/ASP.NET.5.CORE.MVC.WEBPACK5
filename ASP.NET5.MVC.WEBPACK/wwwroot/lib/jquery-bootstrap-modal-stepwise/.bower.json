@@ -1,0 +1,52 @@
+{
+  "name": "jquery-bootstrap-modal-stepwise",
+  "homepage": "https://github.com/BhavanPatel/jquery-bootstrap-modal-stepwise",
+  "authors": [
+    "Bhavan Patel <bhavan7@yahoo.com>"
+  ],
+  "description": "A lightweight stepwise modal for bootstrap",
+  "main": [
+    "dist/modal-steps.min.js"
+  ],
+  "ignore": [
+    "*~",
+    "**/.*",
+    "*.log",
+    "*.pid",
+    "*.seed",
+    ".DS_Store",
+    "node_modules",
+    "bower_components",
+    "src",
+    "test",
+    "tests",
+    "logs",
+    "pids",
+    "lib-cov",
+    "coverage",
+    ".grunt",
+    ".lock-wscript",
+    "build/Release"
+  ],
+  "keywords": [
+    "jquery",
+    "bootstrap",
+    "modals",
+    "modal"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.3.0"
+  },
+  "license": "MIT",
+  "_release": "7896f41dc8",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "7896f41dc8ddced764fceb5ecdac3c84c55f2733"
+  },
+  "_source": "https://github.com/BhavanPatel/jquery-bootstrap-modal-stepwise.git",
+  "_target": "*",
+  "_originalSource": "jquery-bootstrap-modal-stepwise",
+  "_direct": true
+}

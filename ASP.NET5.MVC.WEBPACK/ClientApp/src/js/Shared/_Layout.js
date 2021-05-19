@@ -1,13 +1,9 @@
 ﻿
 // JS Dependencies: Bootstrap & JQuery
 import 'bootstrap';
-import '../../lib/fontawesome/index.js'
-import $ from 'jquery';
-window.jQuery = $;
-window.$ = $;
-window.jquery = $;
 
-import moment from 'moment';
+var moment = require('moment');
+moment.locale('ru')
 window.moment = moment;
 
 /*import './_ValidationScriptsPartial'*/

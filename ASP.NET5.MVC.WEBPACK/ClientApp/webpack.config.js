@@ -4,10 +4,10 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 //const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 var CopyPlugin = require('copy-webpack-plugin');
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
-
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 module.exports = (env, argv) => {
     if ((!argv || !argv.mode) && process.env.ASPNETCORE_ENVIRONMENT === "Development") {
         argv = { mode: "development" };
@@ -46,16 +46,17 @@ module.exports = (env, argv) => {
             'Home.SerializeQueryParams': './src/js/Home/SerializeQueryParams.js',//for Home/SerializeQueryParams.cshtml
         },
         output: {
+            globalObject: `this`,
             path: path.resolve(__dirname, '..', 'wwwroot', 'dist'),
             // Add /* filename */ comments to generated require()s in the output.
             pathinfo: isEnvDevelopment,
             filename: '[name].js',
-
+            libraryTarget: 'this',
             publicPath: `${process.env.homepage}dist/`,
             // this defaults to 'window', but by setting it to 'this' then
             // module chunks which are built will work in web workers as well.
-            globalObject: 'this'
         },
+
         resolve: {
             extensions: [
                 '.js',
@@ -66,63 +67,60 @@ module.exports = (env, argv) => {
                 'cshtml'
             ],
             alias: {
-                'node_modules': path.resolve(__dirname, './node_modules'),
+                //'node_modules': path.resolve(__dirname, './node_modules'),
+                //"./dependencyLibs/inputmask.dependencyLib": "./dependencyLibs/inputmask.dependencyLib.jquery",
+                jquery: "jquery/src/jquery"
             }
         },
-        //optimization: {
-        //    minimize: isEnvProduction,
-        //    minimizer: [() => ({
-        //        terserOptions: {
-        //            parse: {
-        //                // We want terser to parse ecma 8 code. However, we don't want it
-        //                // to apply any minification steps that turns valid ecma 5 code
-        //                // into invalid ecma 5 code. This is why the 'compress' and 'output'
-        //                // sections only apply transformations that are ecma 5 safe
-        //                // https://github.com/facebook/create-react-app/pull/4234
-        //                ecma: 8,
-        //            },
-        //            compress: {
-        //                ecma: 5,
-        //                warnings: false,
-        //                // Disabled because of an issue with Uglify breaking seemingly valid code:
-        //                // https://github.com/facebook/create-react-app/issues/2376
-        //                // Pending further investigation:
-        //                // https://github.com/mishoo/UglifyJS2/issues/2011
-        //                comparisons: false,
-        //                // Disabled because of an issue with Terser breaking valid code:
-        //                // https://github.com/facebook/create-react-app/issues/5250
-        //                // Pending further investigation:
-        //                // https://github.com/terser-js/terser/issues/120
-        //                inline: 2,
-        //            },
-        //            mangle: {
-        //                safari10: true,
-        //            },
-        //            // Added for profiling in devtools
-        //            keep_classnames: isEnvProductionProfile,
-        //            keep_fnames: isEnvProductionProfile,
-        //            output: {
-        //                ecma: 5,
-        //                comments: false,
-        //                // Turned on because emoji and regex is not minified properly using default
-        //                // https://github.com/facebook/create-react-app/issues/2488
-        //                ascii_only: true,
-        //            },
-        //            sourceMap: shouldUseSourceMap,
-        //        },
+        optimization: {
+            minimize: isEnvProduction,
+            minimizer: [() => ({
+                terserOptions: {
+                    parse: {
+                        // We want terser to parse ecma 8 code. However, we don't want it
+                        // to apply any minification steps that turns valid ecma 5 code
+                        // into invalid ecma 5 code. This is why the 'compress' and 'output'
+                        // sections only apply transformations that are ecma 5 safe
+                        // https://github.com/facebook/create-react-app/pull/4234
+                        ecma: 8,
+                    },
+                    compress: {
+                        ecma: 5,
+                        warnings: false,
+                        // Disabled because of an issue with Uglify breaking seemingly valid code:
+                        // https://github.com/facebook/create-react-app/issues/2376
+                        // Pending further investigation:
+                        // https://github.com/mishoo/UglifyJS2/issues/2011
+                        comparisons: false,
+                        // Disabled because of an issue with Terser breaking valid code:
+                        // https://github.com/facebook/create-react-app/issues/5250
+                        // Pending further investigation:
+                        // https://github.com/terser-js/terser/issues/120
+                        inline: 2,
+                    },
+                    mangle: {
+                        safari10: true,
+                    },
+                    // Added for profiling in devtools
+                    keep_classnames: isEnvProductionProfile,
+                    keep_fnames: isEnvProductionProfile,
+                    output: {
+                        ecma: 5,
+                        comments: false,
+                        // Turned on because emoji and regex is not minified properly using default
+                        // https://github.com/facebook/create-react-app/issues/2488
+                        ascii_only: true,
+                    },
+                    sourceMap: shouldUseSourceMap,
+                },
 
-        //    }),
-        //    new CssMinimizerPlugin(),
-        //    ]
-        //},
+            }),
+            new CssMinimizerPlugin(),
+            ]
+        },
         module: {
             strictExportPresence: true,
             rules: [
-                //{
-                //    parser: {
-                //        amd: false, // disable AMD
-                //    }
-                //},
                 // CSS, PostCSS, Sass
                 {
                     test: /\.(scss|css)$/,
@@ -178,18 +176,18 @@ module.exports = (env, argv) => {
                     exclude: /node_modules/,
                     use: ['babel-loader'],
                 },
+
             ]
         },
         plugins: [
-            // Or: To strip all locales except “en”, “es-us” and “ru”
-            // (“en” is built into Moment and can’t be removed)
             new MomentLocalesPlugin({
                 localesToKeep: ['ru'],
             }),
             /*new CleanWebpackPlugin(),*/
             new webpack.ProvidePlugin({
-                $: "jquery",
-                jQuery: "jquery",
+                $: 'jquery',
+                jQuery: 'jquery',
+                jquery: 'jquery',
             }),
             new CopyPlugin({
                 patterns: [
@@ -201,6 +199,7 @@ module.exports = (env, argv) => {
             new MiniCssExtractPlugin({
                 filename: "css/[name].css"
             })
-        ]
+        ],
+
     }]
 }

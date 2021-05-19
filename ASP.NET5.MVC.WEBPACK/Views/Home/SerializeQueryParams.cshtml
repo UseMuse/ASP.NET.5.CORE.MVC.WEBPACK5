@@ -3,30 +3,33 @@
 }
 
 @section Scripts
-{
+    {
+    <script src="~/dist/Home.SerializeQueryParams.js" ></script>
 
     <script>
-        import { setArrayParamUrl, getArrayParamUrl } from '~/dist/Home.SerializeQueryParams.js';
+
+        function SetArrayParamUrl() {
+            let inputData = document.getElementById('ArrayParamUrl')
+            const map = inputData.value.split(',')
+            window.serializeQueryParams.setArrayParamUrl('ArrayParamUrl', map);
+        }
+
+        function GetUrlParam() {
+            let seletedItemsGroupFromUrl = window.serializeQueryParams.getArrayParamUrl('ArrayParamUrl');
+            document.getElementById('urlParam').textContent = JSON.stringify(seletedItemsGroupFromUrl)
+        }
+
+
         function ready() {
 
         }
         document.addEventListener("DOMContentLoaded", ready);
 
-        function _setArrayParamUrl() {
-            const map = document.getElementById('ArrayParamUrl').textContent.split(',')
-            setArrayParamUrl('ArrayParamUrl', map);
-        }
-
-        function getUrlParam() {
-            let seletedItemsGroupFromUrl = getArrayParamUrl('ArrayParamUrl');
-            document.getElementById('urlParam').textContent = JSON.stringify(seletedItemsGroupFromUrl)
-        }
-
     </script>
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
-<button type="button" class="btn btn-primary" Onclick="_setArrayParamUrl()">
+<button type="button" class="btn btn-primary" Onclick="SetArrayParamUrl()">
     set Array Param Url
 </button>
 <div class="form-group">
@@ -34,7 +37,7 @@
     <input type="text" class="form-control" id="ArrayParamUrl">
 </div>
 
-<button type="button" class="btn btn-primary" Onclick="getUrlParam()">
+<button type="button" class="btn btn-primary" Onclick="GetUrlParam()">
     get url Param
 </button>
 <p id="urlParam" class="text-left"></p>

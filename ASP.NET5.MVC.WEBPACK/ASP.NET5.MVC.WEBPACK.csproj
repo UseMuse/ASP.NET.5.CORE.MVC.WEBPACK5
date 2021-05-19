@@ -8,7 +8,7 @@
     <WWWRoot>wwwroot\</WWWRoot>
     <UserSecretsId>12635e4b-97b6-4d6d-bfed-f327a68a0cdd</UserSecretsId>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.6" />
