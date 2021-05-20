@@ -9,7 +9,11 @@ export const api = {
 
 async function get(url, params) {
     const requestOptions = {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'app-id': '60a51ba424bc7732bde6c010'
+        },
     };
 
     let queryString = params ? Object.keys(params).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`).join('&') : ''
@@ -23,7 +27,10 @@ async function get(url, params) {
 async function post(url, body) {
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'app-id': '60a51ba424bc7732bde6c010'
+        },
         body: JSON.stringify(body)
     };
     let response = await fetch(url, requestOptions)
@@ -33,7 +40,10 @@ async function post(url, body) {
 async function put(url, body) {
     const requestOptions = {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'app-id': '60a51ba424bc7732bde6c010'
+        },
         body: JSON.stringify(body)
     };
     let response = await fetch(url, requestOptions)
@@ -43,7 +53,10 @@ async function put(url, body) {
 // prefixed with underscored because delete is a reserved word in javascript
 async function _delete(url) {
     const requestOptions = {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'app-id': '60a51ba424bc7732bde6c010'
+        },
     };
     let response = await fetch(url, requestOptions)
     let data = await handleResponse(response)

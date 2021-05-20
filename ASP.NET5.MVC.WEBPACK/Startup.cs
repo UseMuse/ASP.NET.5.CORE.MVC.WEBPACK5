@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RimuTec.AspNetCore.SpaServices.WebpackDevelopmentServer;
 
 namespace ASP.NET5.MVC.WEBPACK
 {
@@ -28,6 +29,13 @@ namespace ASP.NET5.MVC.WEBPACK
             });
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            // BEGIN webpack-dev-server
+            services.AddSpaStaticFiles(spaStaticFileOptions =>
+            {
+                // This is where files will be served from in non-Development environments
+                spaStaticFileOptions.RootPath = "wwwroot/dist";
+            });
+            // END webpack-dev-server
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,9 +53,9 @@ namespace ASP.NET5.MVC.WEBPACK
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSpaStaticFiles();
             app.UseCookiePolicy();
-         
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -60,6 +68,17 @@ namespace ASP.NET5.MVC.WEBPACK
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            // BEGIN webpack-dev-server
+            app.UseSpa(spaBuilder =>
+            {
+                spaBuilder.Options.SourcePath = "ClientApp/src";
+
+                if (env.IsDevelopment()) // "Development", not "Debug" !!
+                {
+                    spaBuilder.UseWebpackDevelopmentServer(npmScriptName: "watch");
+                }
+            });
+            // END webpack-dev-server
 
         }
     }
